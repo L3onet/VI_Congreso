@@ -12,7 +12,7 @@
 @section('contenido')
 <div class="col-xs-12 col-md-12 col-lg-12">
     <h3 class="text-center my-3">Comit&eacute; organizador </h3>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4 my-4">
         <div class="col">
             <div class="card">
                 <img src="/img/directivos/dir.jpg" class="card-img-top rounded-pill" alt="Director">
@@ -25,23 +25,13 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col">
             <div class="card">
                 <img src="/img/directivos/ssa.jpg" class="card-img-top rounded-pill" alt="Subdirectora de Servicios Administrativos">
                 <div class="card-body">
                     <h5 class="card-title">L.I. Aracely Salgado Mendoza - Subdirectora de Servicios Administrativos</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-body-secondary">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img src="/img/directivos/sp.jpg" class="card-img-top rounded-pill" alt="Subdirector de Planeaci&oacute;n">
-                <div class="card-body">
-                    <h5 class="card-title">L.I. Sergio Vivas Hern&aacute;ndez - Subdirector de Planeaci&oacute;n</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div class="card-footer">
@@ -63,6 +53,18 @@
                             <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="/img/directivos/sp.jpg" class="card-img-top rounded-pill" alt="Subdirector de Planeaci&oacute;n">
+                <div class="card-body">
+                    <h5 class="card-title">L.I. Sergio Vivas Hern&aacute;ndez - Subdirector de Planeaci&oacute;n</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary">Last updated 3 mins ago</small>
                 </div>
             </div>
         </div>
