@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\RegisterController;
 
 /*
@@ -32,3 +33,14 @@ Route::get('/categorias', function () {
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
+
+Route::resource('post', PostController::class);
+// php artisan route:list
+
+//Route::get('/post', [PostController, 'index']);
+//Route::get('/post/{post}', [PostController, 'show']);
+//Route::get('/post/create', [PostController, 'create']);
+//Route::get('/post/{post}/edit', [PostController, 'edit']);
+//Route::post('/post', [PostController, 'store']);
+//Route::put('/post/{post}', [PostController, 'update']);
+//Route::delete('/post/{post}', [PostController, 'delete']);

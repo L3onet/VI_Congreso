@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,6 +15,7 @@ class PostController extends Controller
     public function index()
     {
         //
+        echo 'registros';
     }
 
     /**
@@ -20,7 +23,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get();
+        return view('post.create', compact('categories'));
     }
 
     /**
@@ -29,6 +33,28 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'title' => 'required|min:5|max:500',
+            'slug' => 'required|min:5|max:500',
+            'content' => 'required|min:7',
+            'description' => 'required|min:7',
+            'category_id' => 'required|integer',
+            'posted' => 'required',
+        ]);
+
+        $data = 'Mensaje';
+        //dd($data);
+        Post::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->slug),
+            'content' => $request->content,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'image' => $data,
+            'posted' => $request->posted
+        ]);
+
+        return redirect()->route('post.index');
     }
 
     /**

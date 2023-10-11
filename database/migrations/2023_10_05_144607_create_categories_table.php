@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string("slug", 500)->nullable();
             $table->text("topics")->nullable();
             $table->timestamps();
-            $table->foreignId('staff_id')->constrained()->onDelete('cascade');
         });
     }
 
