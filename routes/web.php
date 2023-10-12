@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\RegisterController;
 
 /*
@@ -35,6 +36,7 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::resource('post', PostController::class);
+Route::resource('category', CategoryController::class);
 // php artisan route:list
 
 //Route::get('/post', [PostController, 'index']);

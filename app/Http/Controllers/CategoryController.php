@@ -13,6 +13,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $categories = Category::get();
+        return view('category.index',["categories" => $categories]);
     }
 
     /**
@@ -21,6 +23,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('category.create');
     }
 
     /**

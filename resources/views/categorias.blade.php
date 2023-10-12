@@ -9,6 +9,36 @@
 </nav>
 @endsection
 
+@section('menu')
+<nav class="navbar navbar-expand-lg bg-primary bg-gradient rounded-pill" aria-label="Eighth navbar example">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample07">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" href="/">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">VI Congreso</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/convocatoria">Convocatoria</a></li>
+                    <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/organizadores">Organizadores</a>
+            </li>
+            </ul>
+            <form role="search">
+                <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+            </form>
+        </div>
+    </div>
+</nav>
+@endsection
+
 @section('contenido')
 <div class="col-xs-12 col-md-12 col-lg-12 text-center my-3">
     <div class="row row-cols-1 row-cols-md-2 g-4">

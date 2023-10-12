@@ -42,11 +42,10 @@
 @section('contenido')
 <div class="row my-4">
     <div class="col-xs-12 col-md-12 col-lg-12">
-        <form action="{{ route('post.store') }}" method="POST" novalidate>
+        <form action="{{ route('category.store') }}" method="POST" novalidate>
             @csrf
             <div class="my-3">
-                <h4 class="mb-2 text-center">Registra una publicaci&oacute;n para la p&aacute;gina de Inicio</h4>
-                <p class="mb-4">Vive la experiencia de la investigaci&oacute;n y de la ciencia</p>
+                <h4 class="mb-2 text-center">Registra una categor&iacute;a para las publicaciones de Inicio</h4>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="">T&iacute;tulo</label>
@@ -85,66 +84,17 @@
                     @enderror
             </div>
             <div class="mb-3">
-                <label class="form-label" for="">Contenido</label>
+                <label class="form-label" for="">T&oacute;picos</label>
                 <textarea
-                    id="content"
-                    name="content"
+                    id="topics"
+                    name="topics"
                     class="form-control form-control-md
-                    @error('content')
+                    @error('topics')
                         border border-danger
                     @enderror"
-                    rows="3">{{ old('content') }}
+                    rows="3">{{ old('topics') }}
                 </textarea>
-                @error('content')
-                    <div class="text-danger text-center">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="">Descripci&oacute;n</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    class="form-control form-control-md
-                    @error('description')
-                        border border-danger
-                    @enderror"
-                    rows="3">{{ old('description') }}
-                </textarea>
-                @error('description')
-                    <div class="text-danger text-center">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="">Categor&iacute;a</label>
-                <select class="form-select
-                    @error('category_id')
-                        border border-danger
-                    @enderror" aria-label="Default select example" name="category_id">
-                    <option selected>Selecciona la categor&iacute;a</option>
-                    @foreach ( $categories as $c )
-                        <option value="{{ $c->id }}">{{ $c->title }}</option>
-                    @endforeach
-                </select>
-                @error('category_id')
-                    <div class="text-danger text-center">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="">Posteado</label>
-                <select class="form-select
-                    @error('posted')
-                        border border-danger
-                    @enderror" aria-label="Default select example" name="posted">
-                    <option value="yes">Sí</option>
-                    <option selected value="not">No</option>
-                </select>
-                @error('posted')
+                @error('topics')
                     <div class="text-danger text-center">
                         {{ $message }}
                     </div>
@@ -153,7 +103,7 @@
             <div class="mb-3 d-grid gap-2 col-12 mx-auto">
                 <button
                     type="submit"
-                    value="Crear cuenta"
+                    value="Crear categor&iacute;a"
                     class="btn btn-primary">Publicar
                 </button>
             </div>

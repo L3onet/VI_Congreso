@@ -19,7 +19,7 @@
     </script>
     <body id="cuerpo">
         <div class="container">
-            <div class="row">
+            <header class="row">
                 <div class="col-12 mb-3 mt-3">
                     <a href="https://www.gob.mx/" target="_blank">
                         <img src="/img/logo_mex.png" width="220" height="60" class="img-fluid me-2" alt="Logo gobierno de M&eacute;xico">
@@ -37,36 +37,10 @@
                         <img src="/img/logo_congreso.png" width="320" height="60" class="img-fluid me-2" alt="logo">
                     </a>
                 </div>
-            </div>
+            </header>
             <div class="row">
                 <div class="col-12">
-                    <nav class="navbar navbar-expand-lg bg-primary bg-gradient rounded-pill" aria-label="Eighth navbar example">
-                        <div class="container">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarsExample07">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active text-white" aria-current="page" href="/">Inicio</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">VI Congreso</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="/convocatoria">Convocatoria</a></li>
-                                        <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="/organizadores">Organizadores</a>
-                                </li>
-                                </ul>
-                                <form role="search">
-                                    <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
-                                </form>
-                            </div>
-                        </div>
-                    </nav>
+                    @yield('menu')
                 </div>
             </div>
 

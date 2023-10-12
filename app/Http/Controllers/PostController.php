@@ -73,7 +73,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
-        echo "edit";
+        $categories = Category::get();
+        return view('post.edit', compact('categories', 'post'));
     }
 
     /**
@@ -82,6 +83,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+
     }
 
     /**

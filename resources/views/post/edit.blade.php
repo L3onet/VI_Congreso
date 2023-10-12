@@ -9,44 +9,17 @@
 </nav>
 @endsection
 
-@section('menu')
-<nav class="navbar navbar-expand-lg bg-primary bg-gradient rounded-pill" aria-label="Eighth navbar example">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarsExample07">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active text-white" aria-current="page" href="/">Inicio</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">Categor&iacute;as</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href=" {{ route('category.create' ) }} ">Agregar</a></li>
-                    <li><a class="dropdown-item" href=" {{ route('category.index' ) }}">Consultar</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown" aria-expanded="false">Publicaciones</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href=" {{ route('post.create' ) }} ">Agregar</a></li>
-                    <li><a class="dropdown-item" href=" {{ route('post.index' ) }}">Consultar</a></li>
-                </ul>
-            </li>
-        </div>
-    </div>
-</nav>
-@endsection
-
 @section('contenido')
 <div class="row my-4">
-    <div class="col-xs-12 col-md-12 col-lg-12">
-        <form action="{{ route('post.store') }}" method="POST" novalidate>
+    <div class="col-xs-12 col-md-6 col-lg-6">
+        <img src="/img/registrar.jpg" class="img-fluid" alt="...">
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-6">
+        <form action="{{ route('post.update', $post->id) }}" method="POST" novalidate>
             @csrf
+            @method("PUT")
             <div class="my-3">
-                <h4 class="mb-2 text-center">Registra una publicaci&oacute;n para la p&aacute;gina de Inicio</h4>
-                <p class="mb-4">Vive la experiencia de la investigaci&oacute;n y de la ciencia</p>
+                <h4 class="mb-2 text-center">Modificar la  publicaci&oacute;n {{ $post->title }}</h4>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="">T&iacute;tulo</label>
@@ -58,7 +31,7 @@
                         border border-danger
                     @enderror"
                     placeholder="T&iacute;tulo"
-                    value="{{ old('title') }}"
+                    value="{{ $post->title }}"
                     type="text">
                     @error('title')
                         <div class="text-danger text-center">
@@ -76,7 +49,7 @@
                         border border-danger
                     @enderror"
                     placeholder="Slug"
-                    value="{{ old('slug') }}"
+                    value="{{ $post->slug }}"
                     type="text">
                     @error('slug')
                         <div class="text-danger text-center">
@@ -93,7 +66,7 @@
                     @error('content')
                         border border-danger
                     @enderror"
-                    rows="3">{{ old('content') }}
+                    rows="3">{{ $post->content }}
                 </textarea>
                 @error('content')
                     <div class="text-danger text-center">
@@ -110,7 +83,7 @@
                     @error('description')
                         border border-danger
                     @enderror"
-                    rows="3">{{ old('description') }}
+                    rows="3">{{ $post->description }}
                 </textarea>
                 @error('description')
                     <div class="text-danger text-center">
@@ -124,9 +97,9 @@
                     @error('category_id')
                         border border-danger
                     @enderror" aria-label="Default select example" name="category_id">
-                    <option selected>Selecciona la categor&iacute;a</option>
+                    <option>Selecciona la categor&iacute;a</option>
                     @foreach ( $categories as $c )
-                        <option value="{{ $c->id }}">{{ $c->title }}</option>
+                        <option {{ $post->category_id == $c->id ? 'selected' : '' }} value="{{ $c->id }}">{{ $c->title }}</option>
                     @endforeach
                 </select>
                 @error('category_id')
@@ -141,8 +114,8 @@
                     @error('posted')
                         border border-danger
                     @enderror" aria-label="Default select example" name="posted">
-                    <option value="yes">Sí</option>
-                    <option selected value="not">No</option>
+                    <option {{ $post->posted == 'yes' ? 'selected' : '' }} value="yes">Sí</option>
+                    <option {{ $post->posted == 'not' ? 'selected' : '' }} value="not">No</option>
                 </select>
                 @error('posted')
                     <div class="text-danger text-center">
