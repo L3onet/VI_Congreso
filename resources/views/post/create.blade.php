@@ -114,9 +114,8 @@
                     @error('posted')
                         border border-danger
                     @enderror" aria-label="Default select example" name="posted">
-                    <option selected>Publicar</option>
                     <option value="yes">Sí</option>
-                    <option value="not">No</option>
+                    <option selected value="not">No</option>
                 </select>
                 @error('posted')
                     <div class="text-danger text-center">

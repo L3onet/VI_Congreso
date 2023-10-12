@@ -15,7 +15,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        echo 'registros';
+        $posts = Post::get();
+        return view('post.index',["posts" => $posts]);
     }
 
     /**
@@ -63,6 +64,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
+        echo "show";
     }
 
     /**
@@ -71,6 +73,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
+        echo "edit";
     }
 
     /**
@@ -87,5 +90,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        echo "destroy";
     }
 }
