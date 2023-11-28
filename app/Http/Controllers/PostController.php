@@ -64,7 +64,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
-        echo "show";
+        $categories = Category::get();
+        return view('post.show', compact('categories', 'post'));
     }
 
     /**
@@ -83,7 +84,18 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+        $data = $request->validate([
+            'title' => 'required|min:5|max:500',
+            'slug' => 'required|min:5|max:500',
+            'content' => 'required|min:7',
+            'description' => 'required|min:7',
+            'category_id' => 'required|integer',
+            'posted' => 'required',
+        ]);
 
+        $post->update($data);
+
+        return redirect()->route('post.index');
     }
 
     /**
@@ -91,7 +103,16 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
-        echo "destroy";
+        //echo "Mensaje";
+
+        $message = 'Registro eliminado con éxito';
+
+        try {
+            $post->delete();
+        } catch (\Exception $e) {
+            $message = 'Error al eliminar el registro';
+        }
+        return redirect()->route('post.index')->with('message', $message);
+
     }
 }

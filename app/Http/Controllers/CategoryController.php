@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\DataTables\CategoryDataTable;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(CategoryDataTable $dataTable)
     {
         //
         $categories = Category::get();
         return view('category.index',["categories" => $categories]);
+        //return $dataTable->render('category.index');
     }
 
     /**

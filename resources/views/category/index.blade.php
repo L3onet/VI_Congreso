@@ -33,26 +33,28 @@
 @section('contenido')
 <div class="row my-4">
     <div class="col-xs-12 col-md-12 col-lg-12">
-        <h2 class="text-center">Lista de categorias</h2>
+        <h2 class="text-center">Categorias</h2>
         <p class="text-end"><a href="{{ route('category.create') }}" target="_blank"><button type="button" class="btn btn-primary">Agregar</button></a></p>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">T&iacute;tulo</th>
                     <th scope="col">Enlace</th>
-                    <th scope="col">Topics</th>
+                    <th scope="col">Topicos</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @foreach ( $categories as $p)
+                @foreach ( $categories as $c)
                 <tr>
-                    <th scope="row">{{ $p->title }}</th>
-                    <td>{{ $p->slug }}</td>
-                    <td>{{ $p->topics }}</td>
+                    <th scope="row">{{ $c->title }}</th>
+                    <td>{{ $c->slug }}</td>
+                    <td>{{ $c->topics }}</td>
+                    <td>{{ $c->description }}</td>
                     <td>
-                        <div class="d-flex flex-row mb-1">
+                        <div class="d-flex flex-row mb-3">
                             <div class="p-1">
-                                <a href="{{ route('category.edit', $p) }}">
+                                <a href="{{ route('category.edit', $c) }}">
                                     <button type="button" class="btn btn-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
                                             <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
@@ -61,7 +63,7 @@
                                 </a>
                             </div>
                             <div class="p-1">
-                                <a href="{{ route('category.show', $p) }}">
+                                <a href="{{ route('category.show', $c) }}">
                                     <button type="button" class="btn btn-success">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                             <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
@@ -71,7 +73,7 @@
                                 </a>
                             </div>
                             <div class="p-1">
-                                <form action="{{ route('category.destroy', $p) }}" method="post">
+                                <form id="frmDelete" action="{{ route('category.destroy', $c) }}" method="post">
                                     @method("DELETE")
                                     @csrf
                                     <button type="submit" class="btn btn-danger">
@@ -83,10 +85,13 @@
                                 </form>
                             </div>
                         </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+
     </div>
 </div>
 @endsection
+

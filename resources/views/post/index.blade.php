@@ -55,10 +55,14 @@
                     <td>{{ $p->content }}</td>
                     <td>{{ $p->description }}</td>
                     <td>{{ $p->category->title }}</td>
-                    <td>{{ $p->posted }}</td>
+                    <td>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="posted" id="posted" {{ $p->posted == 'yes' ? 'checked' : '' }} disabled>
+                        </div>
+                    </td>
                     <td>
                         <div class="d-flex flex-row mb-3">
-                            <div class="p-2">
+                            <div class="p-1">
                                 <a href="{{ route('post.edit', $p) }}">
                                     <button type="button" class="btn btn-primary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -67,7 +71,7 @@
                                     </button>
                                 </a>
                             </div>
-                            <div class="p-2">
+                            <div class="p-1">
                                 <a href="{{ route('post.show', $p) }}">
                                     <button type="button" class="btn btn-success">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -77,8 +81,8 @@
                                     </button>
                                 </a>
                             </div>
-                            <div class="p-2">
-                                <form action="{{ route('post.destroy', $p) }}" method="post">
+                            <div class="p-1">
+                                <form id="frmDelete" action="{{ route('post.destroy', $p) }}" method="post">
                                     @method("DELETE")
                                     @csrf
                                     <button type="submit" class="btn btn-danger">
@@ -90,9 +94,7 @@
                                 </form>
                             </div>
                         </div>
-
-
-
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -100,4 +102,25 @@
 
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $('#frmDelete').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text: "¡No podras revertirlo!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, borrar!"
+        }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).unbind('submit').submit();
+                }
+            });
+        });
+</script>
 @endsection
